@@ -9,6 +9,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author: shaozhixing
  * @date: 2019/7/15 14:38
@@ -29,21 +31,16 @@ public class HelloAspect {
 
     @Around("method()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        String targetName = joinPoint.getTarget().getClass().getName();
+        String className = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
-        Object[] arguments = joinPoint.getArgs();
-        String sss = this.getCacheKey(null, targetName, methodName, arguments);
-        System.out.println("sssssssssss------>>"+sss);
-        /*String className = joinPoint.getTarget().getClass().getName();
-        String methodName = joinPoint.getSignature().getName();
-        System.out.println("HELLO->method--------------" + methodName);
         String key = className + "." + methodName;
+        System.out.println("hello key" + key);
         Object result = lruTTLCache.get(key);
         if (result == null) {
             result = joinPoint.proceed();
             lruTTLCache.put(key, result);
         }
-        List<String> l = lruTTLCache.searchKeys("com");*/
+        List<String> l = lruTTLCache.searchKeys("com");
         return null;
     }
 
