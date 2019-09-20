@@ -5,7 +5,6 @@ import com.example.demo.model.A;
 import com.example.demo.thread.ThreadTool;
 import com.example.demo.vo.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,8 +25,8 @@ public class Controller1 {
     private AdminMapper adminMapper;
 
     @Hello
-    @Scheduled(cron = "*/1 * * * * ?")
-    public A hi(){
+//    @Scheduled(cron = "*/1 * * * * ?")
+    public Admin hi(){
         A a = new A();
         a.setA("a");
         a.setB("b");
@@ -43,7 +42,7 @@ public class Controller1 {
 
         }*/
         Admin admin = adminMapper.selectByPrimaryKey("a1b053a3d5114e3f98e4a397de2fb029");
-        return a;
+        return admin;
     }
 
     public static void main(String[] args) {
